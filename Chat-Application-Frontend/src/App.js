@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from './components/HomePage/HomePage';
 import Status from './components/Status/Status';
 import StoryViewer from './components/Status/StatusViewer';
+import "./App.css";
 
 function App() {
   return (

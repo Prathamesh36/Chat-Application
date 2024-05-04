@@ -4,10 +4,12 @@ import { BiCommentDetail } from "react-icons/bi";
 import {
   BsThreeDotsVertical,
   BsFilter,
-  BsMicFill,
   BsEmojiSmile,
 } from "react-icons/bs";
+import { FiMic } from "react-icons/fi";
+import { FiSearch } from "react-icons/fi";
 import { TbCircleDashed, TbMessagePlus } from "react-icons/tb";
+import { RiSendPlaneFill } from "react-icons/ri";
 import { AiOutlineSearch } from "react-icons/ai";
 import { ImAttachment } from "react-icons/im";
 import UserChat from "./UserChat";
@@ -19,6 +21,7 @@ import { createNewMessage, getAllMessage } from "../../Redux/Message/Action";
 import { useNavigate } from "react-router-dom";
 import io from "socket.io-client";
 import "./Home.css";
+
 import { useRef } from "react";
 import Picker from "emoji-picker-react";
 import Profile from "./Profile";
@@ -122,7 +125,7 @@ const HomePage = () => {
   //get all chats
   useEffect(() => {
     if (token) dispatch(getAllChat(token));
-  }, [token, chat.singleChat,chat.createdGroup]);
+  }, [token, chat.singleChat, chat.createdGroup]);
 
   //create new message
   const handleCreateNewMessage = () => {
@@ -215,7 +218,7 @@ const HomePage = () => {
     setIsOpen(false);
   };
 
-  const handleBack = () => setIsProfile(false);   
+  const handleBack = () => setIsProfile(false);
 
   useEffect(() => {
     setOpen(true);
@@ -232,12 +235,12 @@ const HomePage = () => {
 
   return (
     <div className="relative">
-      <div className="h-[100vh] w-[100vw] bg-[#d7d7d7]"></div>
-      
-      <div className="absolute w-[90vw] h-[88vh] bg-[#f0f2f500] top-12 left-[80px] flex rounded-3xl">
-        <div className="w-[30%] bg-[#e8e9ec] h-full rounded-3xl ">
+      <div className="h-[100vh] w-[100vw] bg-[#EEEEEE]"></div>
 
-          {isCreateGroup && (     
+      <div className="absolute w-[90vw] h-[88vh] bg-[#f0f2f500] top-12 left-[80px] flex rounded-2xl">
+        <div className="w-[30%] h-full rounded-2xl ">
+
+          {isCreateGroup && (
             <div className="h-full">
               <CreateGroup
                 setIsGoup={setIsCreateGroup}
@@ -258,9 +261,9 @@ const HomePage = () => {
 
           {!isProfile && !isCreateGroup && (
             <div className="h-full ">
-              <div className=" w-full h-[18%]">
+              <div className=" w-full h-[21%] mb-2">
                 {/* profile img and icons */}
-                <div className="flex justify-between items-center bg-[#76ABAE] rounded-t-3xl px-3 py-3 text-white">
+                <div className="flex justify-between items-center bg-white rounded-2xl px-4 py-4 text-black mb-2">
                   <div className="flex items-center space-x-3 ">
                     <img
                       onClick={() => setIsProfile(true)}
@@ -281,18 +284,18 @@ const HomePage = () => {
                 </div>
 
                 {/* input */}
-                <div className="relative flex justify-center items-center bg-white py-4 px-3">
+                <div className="relative flex justify-center items-center bg-white py-4 px-4 rounded-2xl ">
                   <input
                     onChange={(e) => {
                       setQuerys(e.target.value);
                       handleSearch(e.target.value);
                     }}
-                    className="border border-slate-300 hover:border-slate-400 outline-none py-2  rounded-3xl w-[93%] pl-9"
+                    className="border border-slate-300 hover:border-slate-400 outline-none py-2  rounded-3xl w-[93%] pl-7"
                     type="text"
-                    placeholder="Search or start new Chat"
+                    placeholder="Search..."
                     value={querys}
                   />
-                  <AiOutlineSearch className="absolute top-7 left-5" />
+                  <FiSearch  className="absolute top-7 right-20 text-slate-400" />
                   <div>
                     <BsFilter className="ml-4 text-3xl" />
                   </div>
@@ -300,7 +303,7 @@ const HomePage = () => {
               </div>
               {/* all user */}
 
-              <div className="relative bg-white rounded-b-3xl overflow-y-scroll h-[82%] z-200">
+              <div className="relative bg-[#ffffff] rounded-2xl overflow-y-scroll h-[78%] z-200 no-scrollbar">
                 {querys &&
                   auth.searchUser?.map((item, index) => (
                     <div
@@ -345,9 +348,9 @@ const HomePage = () => {
                           userImg={
                             auth.reqUser.id !== item.users[0].id
                               ? item.users[0].profile_picture ||
-                                "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+                              "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
                               : item.users[1].profile_picture ||
-                                "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+                              "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
                           }
                           notification={notifications.length}
                           isNotification={
@@ -370,7 +373,7 @@ const HomePage = () => {
         </div>
 
         {!currentChat && (
-          <div className="w-[70%] flex flex-col ml-5 items-center justify-start bg-[#fefefe] rounded-3xl overflow-hidden ">
+          <div className="w-[70%] flex flex-col ml-2 items-center justify-start bg-[#fefefe] rounded-2xl overflow-hidden ">
             {/* <div className="max-w-[70%] text-center">
               <img
                 src="https://res.cloudinary.com/zarmariya/image/upload/v1662264838/whatsapp_multi_device_support_update_image_1636207150180-removebg-preview_jgyy3t.png"
@@ -383,36 +386,36 @@ const HomePage = () => {
               </p>
             </div> */}
             {/* <img src="file:///C:/Users/PRATHAMESH/OneDrive/Desktop/homeBgimg.jpg" alt="" /> */}
-            <Spline scene="https://prod.spline.design/PbHx9Uf0k1tGye75/scene.splinecode" className='spline flex justify-center h-[60vh]'/>
+            <Spline scene="https://prod.spline.design/PbHx9Uf0k1tGye75/scene.splinecode" className='spline flex justify-center h-[60vh]' />
             <div>
-                <p className="HomePageText text-6xl text-gray-600">Connect Instantly.</p>
+              <p className="HomePageText text-6xl text-gray-600">Connect Instantly.</p>
             </div>
-        </div>
-        
+          </div>
+
         )}
 
         {/*right side message section*/}
 
         {currentChat && (
           // bg-[url('https://static.whatsapp.net/rsrc.php/v3/yl/r/gi_DckOUM5a.png')]
-          <div className="w-[70%] chat-background relative rounded-3xl ml-5 pt-5 ">
+          <div className="w-[70%] relative rounded-2xl ml-2 ">
             {/* header part */}
-            <div className="header absolute top-0 w-full bg-[#76ABAE] rounded-t-3xl text-white">
+            <div className="header top-0 w-full bg-white rounded-2xl text-black mb-2">
               <div className=" flex justify-between">
-                <div className="py-3 space-x-4 flex items-center px-3 bg">
+                <div className="py-4 space-x-4 flex items-center px-4 bg">
                   <img
                     className="w-10 h-10 rounded-full"
-                    src={currentChat?.is_group? (currentChat?.chat_image || "https://cdn.pixabay.com/photo/2016/04/15/18/05/computer-1331579__340.png"):
+                    src={currentChat?.is_group ? (currentChat?.chat_image || "https://cdn.pixabay.com/photo/2016/04/15/18/05/computer-1331579__340.png") :
                       (auth.reqUser?.id !== currentChat?.users[0].id
                         ? currentChat?.users[0].profile_picture ||
-                          "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+                        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
                         : currentChat?.users[1].profile_picture ||
-                          "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png")
+                        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png")
                     }
                     alt=""
                   />
                   <p>
-                    {currentChat?.is_group? (currentChat?.chat_name):(auth.reqUser?.id !== currentChat?.users[0].id
+                    {currentChat?.is_group ? (currentChat?.chat_name) : (auth.reqUser?.id !== currentChat?.users[0].id
                       ? currentChat?.users[0].full_name
                       : currentChat?.users[1].full_name)}
                   </p>
@@ -430,7 +433,7 @@ const HomePage = () => {
 
             <div
               onClick={handleEmojiBoxClose}
-              className="px-10 h-[78vh] overflow-y-scroll pb-3"
+              className="px-10 h-[69vh] overflow-y-scroll mb-2 chat-background bg-slate-50 rounded-2xl"
             >
               <div className=" space-y-1 flex flex-col justify-center border-none mt-20 py-2 pl-10 pr-10">
                 {messages.length > 0 &&
@@ -447,36 +450,52 @@ const HomePage = () => {
 
 
             {/* footer send message part */}
-            <div className="footer bg-[#76ABAE] absolute bottom-0 w-full py-3 text-2xl rounded-b-3xl text-white">
-              <div className="flex justify-between items-center px-5 relative ">
-                <BsEmojiSmile
-                  onClick={() => setIsOpen(!isOpen)}
-                  className="cursor-pointer"
-                />
-                <ImAttachment />
-                <div
-                  className={`${
-                    isOpen ? "block" : "hidden"
-                  } absolute bottom-16`}
-                >
-                  <Picker onEmojiClick={onEmojiClick} />
-                </div>
+            <div className="footer absolute bottom-0 w-full flex justify-between gap-2">
+              <div className="bg-white rounded-2xl w-[90%] py-[1rem] text-2xl  text-black">
+                <div className="flex justify-between items-center px-6 relative ">
 
-                <input
-                  onChange={(e) => setContent(e.target.value)}
-                  className="py-2 outline-none border-none bg-white pl-4 w-[85%] rounded-3xl text-black"
-                  placeholder="Type message"
-                  value={content}
-                  onKeyPress={(e) => {
-                    if (e.key === "Enter") {
-                      handleCreateNewMessage();
-                      setContent("");
-                    }
-                  }}
-                />
-                <BsMicFill />
+                  <ImAttachment className="self-center"/>
+                  <div
+                    className={`${isOpen ? "block" : "hidden"
+                      } absolute bottom-[310px] right-60`}
+                  >
+                    <Picker onEmojiClick={onEmojiClick} />
+                  </div>
+
+                  <input
+                    onChange={(e) => setContent(e.target.value)}
+                    className="py-2 outline-none border-none bg-white pl-4 w-[90%] rounded-2xl text-black text-sm "
+                    placeholder="Write messages..."
+                    value={content}
+                    onKeyPress={(e) => {
+                      if (e.key === "Enter") {
+                        handleCreateNewMessage();
+                        setContent("");
+                      }
+                    }}
+                  />
+                  <BsEmojiSmile
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="cursor-pointer self-center"
+                  />
+
+                </div>
               </div>
+
+              {/* mic */}
+              <div className=" bg-white w-[72px] h-[72px] py-4 text-2xl rounded-2xl text-black flex justify-center">
+                <FiMic  className="self-center" />
+              </div>
+
+              {/* send */}
+              <div className=" bg-[#FF4A09] w-[72px] h-[72px]  py-4 text-2xl rounded-2xl flex justify-center text-white">
+                <RiSendPlaneFill className="self-center" />
+              </div>
+
             </div>
+
+
+
           </div>
         )}
       </div>

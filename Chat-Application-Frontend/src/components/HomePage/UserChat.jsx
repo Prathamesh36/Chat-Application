@@ -12,9 +12,9 @@ const UserChat = ({
   isNotification,
 }) => {
   return (
-    <div className="flex items-center justify-center py-2 group cursor-pointer bg-slate-100 rounded-lg mb-2 mr-3 ml-3 mt-2 hover">
+    <div className="flex items-center justify-center py-2 group cursor-pointer bg-slate-100 rounded-lg mb-1 mr-3 ml-3 mt-3 hover">
       <div className="w=[20%]">
-        <img className="h-12 w-12 ml-1 rounded-full" src={userImg} alt="" />
+        <img className="h-11 w-11 ml-1 rounded-full" src={userImg} alt="" />
       </div>
       <div className="pl-5 w-[80%]">
         <div className="flex justify-between items-center">

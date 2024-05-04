@@ -1,12 +1,15 @@
+
+
+
 *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  html,body{
-    font-family: 'Poppins';
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,body{
+  font-family: 'Poppins';
+}
   
   
   .blocks-container{
@@ -20,7 +23,7 @@
   }
   
   #blocks{
-    background-color: #cecece;
+    background-color: #f6f6f6;
     width:105vw;
     height: 100vh;
     display: flex;
@@ -39,7 +42,7 @@
   }
   
   .highlight{
-    border-color: #76ABAE;
+    border-color: #FF4A09;
   }
   
   .content{
