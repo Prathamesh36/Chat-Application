@@ -57,12 +57,18 @@ const Login = () => {
     <div>
       <div className="flex justify-center min-h-screen items-center relative ">
       <WelcomeScr className="absolute"/>
-      <div className="w-[30%] p-10  shadow-rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; bg-white rounded-2xl absolute">
+      <div className="w-[30%] p-10 shadow bg-white rounded-2xl absolute">
+
+        <div className="w-full h-10 flex justify-center content-center">
+          <p className="text-2xl font-semibold">Login</p>
+
+        </div>
+
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <p className="mb-2">Email</p>
             <input
-              className="py-2 px-3 outline outline-[#FF4A09] w-full rounded-3xl border-1"
+              className="py-2 px-3 outline outline-[#FF4A09] outline-2 w-full rounded-3xl border-1"
               type="text"
               placeholder="Enter your Email"
               name="email"
@@ -73,7 +79,7 @@ const Login = () => {
           <div>
             <p className="mb-2">Password</p>
             <input
-              className="py-2 px-2 outline outline-[#FF4A09] w-full rounded-3xl border-1"
+              className="py-2 px-3 outline outline-[#FF4A09] outline-2 w-full rounded-3xl border-1"
               type="password"
               placeholder="Enter your Password"
               name="password"
@@ -92,7 +98,7 @@ const Login = () => {
           </div>
         </form>
         <div className="flex space-x-3 item-center mt-5">
-          <p className="">Create New Account</p>
+          <p className="">Create New Account-</p>
           <p
             onClick={() => navigate("/Signup")}
             className="text-blue-500 hover:text-blue-800 cursor-pointer"

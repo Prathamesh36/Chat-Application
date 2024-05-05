@@ -59,14 +59,20 @@ const token = localStorage.getItem("token");
   return (
 
     <div>
-      <div className="flex flex-col justify-center min-h-screen items-center relative">
+      <div className="flex flex-col justify-center min-h-screen items-center relative ">
       <WelcomeScr className="absolute"/>
-      <div className="w-[30%] p-10 shadow-md bg-white rounded-3xl absolute">
+      <div className="w-[30%] p-10 shadow-md bg-white rounded-2xl absolute shadow">
+
+        <div className="w-full h-10 flex justify-center content-center">
+          <p className="text-2xl font-semibold">Signup</p>
+
+        </div>
+
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <p className="mb-2">User Name</p>
             <input
-              className="py-2 px-3 outline outline-[#76ABAE] w-full rounded-3xl border-1"
+              className="py-2 px-3 outline outline-[#FF4A09] outline-2 w-full rounded-3xl border-1"
               type="text"
               placeholder="Enter username"
               name="full_name"
@@ -77,7 +83,7 @@ const token = localStorage.getItem("token");
           <div>
             <p className="mb-2">Email</p>
             <input
-              className="py-2 px-3 outline outline-[#76ABAE] w-full rounded-3xl border-1"
+              className="py-2 px-3 outline outline-[#FF4A09] outline-2 w-full rounded-3xl border-1"
               type="text"
               placeholder="Enter your Email"
               name="email"
@@ -88,7 +94,7 @@ const token = localStorage.getItem("token");
           <div>
             <p className="mb-2">Password</p>
             <input
-              className="py-2 px-2 outline outline-[#76ABAE] w-full rounded-3xl border-1"
+              className="py-2 px-3 outline outline-[#FF4A09] outline-2 w-full rounded-3xl border-1"
               type="text"
               placeholder="Enter your Password"
               name="password"
@@ -98,7 +104,7 @@ const token = localStorage.getItem("token");
           </div>
           <div>
             <input
-              className="py-[0.7rem] px-3 w-full rounded-3xl bg-[#76ABAE] text-white mt-3"
+              className="py-[0.7rem] px-3 w-full rounded-3xl bg-[#FF4A09] text-white mt-3"
               type="Submit"
               placeholder="Enter your Password"
               value={"Signup"}
