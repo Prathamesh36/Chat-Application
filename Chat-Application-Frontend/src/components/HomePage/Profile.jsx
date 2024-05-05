@@ -23,7 +23,7 @@ const Profile = ({ handleBack }) => {
   const handleClose = () => setOpen(false);
   return (
     <div className=" w-full h-full">
-      <div className=" flex items-center rounded-t-3xl space-x-10 bg-[#76ABAE] text-white pt-16 px-10 pb-5">
+      <div className=" flex items-center rounded-2xl space-x-10 bg-[#ff4a09] text-white pt-5 px-10 pb-5 mb-2">
         <BsArrowLeft
           onClick={handleBack}
           className="cursor-pointer text-2xl font-bold"
@@ -31,12 +31,13 @@ const Profile = ({ handleBack }) => {
         <p className="text-xl font-semibold">Profile</p>
       </div>
 
-      {/*update profile pic section*/}
+      <div className="bg-white w-full h-[79vh] rounded-2xl pt-8">
+        {/*update profile pic section*/}
 
       <div className="flex flex-col justify-center items-center my-12">
         <label htmlFor="imgInput">
           <img
-            className="rounded-full w-[15vw] h-[15vw] cursor-pointer"
+            className="rounded-full w-[13vw] h-[13vw] cursor-pointer"
             src={tempPicture || auth.reqUser.profile_picture || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"}
             alt=""
           />
@@ -82,8 +83,8 @@ const Profile = ({ handleBack }) => {
 
       {/*name section*/}
 
-      <div className="bg-white px-3 ">
-        <p className="py-3">Your Name</p>
+      <div className="bg-white px-5 ">
+        <p className="pt-4">Your Name</p>
         {!flag && (
           <div className="w-full flex justify-between items-center">
             <p className="py-3">{username || auth.reqUser?.full_name}</p>
@@ -101,7 +102,7 @@ const Profile = ({ handleBack }) => {
           <div className="w-full flex justify-between items-center py-2">
             <input
               onChange={(e) => setUsername(e.target.value)}
-              className="w-[80%] outline-none border-b-2 border-blue-700 px-2  py-2"
+              className="w-[80%] border-2 border-slate-300 px-3  py-2 rounded-3xl"
               type="text"
               placeholder="Enter you name"
               value={username}
@@ -126,8 +127,8 @@ const Profile = ({ handleBack }) => {
       </div>
 
 
-      <div className="px-3 my-5">
-        <p className="py-10">
+      <div className="px-5 my-5">
+        <p className="py-10 text-slate-500 text-sm">
           this is not your username, this name will be visible to your whatapp
           contects.
         </p>
@@ -139,6 +140,7 @@ const Profile = ({ handleBack }) => {
         handleClose={handleClose}
         type={"success"}
       />
+      </div>
     </div>
   );
 };

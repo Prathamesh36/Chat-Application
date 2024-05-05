@@ -6,6 +6,7 @@ import { currentUser, register } from "../../Redux/Auth/Action";
 import SimpleSnackbar from "../HomePage/SimpleSnackbar";
 import WelcomeScr from "../HomePage/WelcomeScr";
 
+
 const Signup = () => {
   const [inputData, setInputData] = useState({
     full_name: "",

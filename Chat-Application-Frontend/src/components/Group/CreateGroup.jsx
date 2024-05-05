@@ -7,13 +7,15 @@ import {
   BsPencil,
 } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { searchUser, updateUser } from "../../Redux/Auth/Action";
-import { AiOutlineSearch } from "react-icons/ai";
+import { searchUser } from "../../Redux/Auth/Action";
+
 import UserChat from "../HomePage/UserChat";
 import SelectedMember from "./SelectedMember";
 import NewGroup from "./NewGroup";
 
-const CreateGroup = ({ handleBack,setIsGoup }) => {
+import { FiSearch } from "react-icons/fi";
+
+const CreateGroup = ({ handleBack, setIsGoup }) => {
   const { auth, chat } = useSelector((store) => store);
 
   const [groupMember, setGroupMember] = useState(new Set());
@@ -30,6 +32,7 @@ const CreateGroup = ({ handleBack,setIsGoup }) => {
     dispatch(searchUser({ userId: auth.reqUser?.id, keyword, token }));
   };
   const handleRemoveMember = (item) => {
+    console.log("removed..")
     groupMember.delete(item);
     setGroupMember(groupMember);
   };
@@ -37,16 +40,54 @@ const CreateGroup = ({ handleBack,setIsGoup }) => {
     <div className="w-full h-full">
       {!newGroup && (
         <div>
-          <div className="flex items-center rounded-t-3xl space-x-10 bg-[#76ABAE] text-white pt-16 px-10 pb-5">
+          <div className="flex items-center rounded-2xl space-x-10 bg-[#ff4a09] text-white pt-[1.3rem] px-10 pb-[1.3rem] mb-2">
             <BsArrowLeft
               onClick={handleBack}
-              className="cursor-pointer text-2xl font-bold"
+              className="cursor-pointer text-3xl font-bold"
             />
-            <p className="text-xl font-semibold">Add Group Participats</p>
+            <p className="text-md font-semibold ml-4">Add Group Participats</p>
           </div>
 
-          <div className="relative  bg-white py-4 px-3">
-            <div className="flex space-x-2 flex-wrap space-y-1">
+          <div className="relative  bg-white py-4 px-3 rounded-2xl mb-2">
+            {/* <div className="flex space-x-2 flex-wrap space-y-1">
+              {groupMember.size > 0 &&
+                Array.from(groupMember).map((item) => (
+                  <SelectedMember
+                    handleRemoveMember={() => handleRemoveMember(item)}
+                    member={item}
+                  />
+                ))}
+            </div> */}
+
+
+            <input
+              onChange={(e) => {
+                setQuerys(e.target.value);
+                handleSearch(e.target.value);
+              }}
+              className="border border-slate-300 hover:border-slate-400 outline-none py-2  rounded-3xl w-[93%] pl-7"
+              type="text"
+              placeholder="Search..."
+              value={querys}
+            />
+            <FiSearch className="absolute top-7 right-20 text-slate-400" />
+
+
+            {/* <input
+              onChange={(e) => {
+                setQuerys(e.target.value);
+                handleSearch(e.target.value);
+              }}
+              className="outline-none border-b border-[#888888] px-2  py-2 w-[93%]"
+              type="text"
+              placeholder="Search or start new Chat"
+              value={querys}
+            /> */}
+          </div>
+
+          <div className="bg-white overflow-y-scroll h-[59.6vh] rounded-2xl mb-2">
+            
+            <div className="flex flex-wrap m-2">
               {groupMember.size > 0 &&
                 Array.from(groupMember).map((item) => (
                   <SelectedMember
@@ -56,19 +97,7 @@ const CreateGroup = ({ handleBack,setIsGoup }) => {
                 ))}
             </div>
 
-            <input
-              onChange={(e) => {
-                setQuerys(e.target.value);
-                handleSearch(e.target.value);
-              }}
-              className="outline-none border-b border-[#888888] px-2  py-2 w-[93%]"
-              type="text"
-              placeholder="Search or start new Chat"
-              value={querys}
-            />
-          </div>
 
-          <div className="bg-white overflow-y-scroll h-[50.2vh]">
             {querys &&
               auth.searchUser?.map((item, index) => (
                 <div
@@ -79,7 +108,7 @@ const CreateGroup = ({ handleBack,setIsGoup }) => {
                   }}
                   key={item?.id}
                 >
-                  <hr />
+
                   <UserChat
                     isChat={false}
                     name={item.full_name}
@@ -92,12 +121,12 @@ const CreateGroup = ({ handleBack,setIsGoup }) => {
               ))}
           </div>
 
-          <div className="bottom-11 py-9 bg-slate-200 flex items-center justify-center rounded-b-3xl">
+          <div className="bottom-11 py-5 bg-[#FF4A09] flex items-center justify-center rounded-2xl">
             <div
               onClick={() => {
                 setNewGroup(true);
               }}
-              className="bg-green-600 rounded-full p-4 cursor-pointer"
+              className="cursor-pointer "
             >
               <BsArrowRight className="text-white font-bold text-3xl" />
             </div>
@@ -107,7 +136,7 @@ const CreateGroup = ({ handleBack,setIsGoup }) => {
 
       {newGroup && (
         <div>
-          <NewGroup groupMember={groupMember} setIsCreateGroup={setIsGoup}/>
+          <NewGroup groupMember={groupMember} setIsCreateGroup={setIsGoup} />
         </div>
       )}
     </div>

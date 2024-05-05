@@ -387,8 +387,9 @@ const HomePage = () => {
             </div> */}
             {/* <img src="file:///C:/Users/PRATHAMESH/OneDrive/Desktop/homeBgimg.jpg" alt="" /> */}
             <Spline scene="https://prod.spline.design/PbHx9Uf0k1tGye75/scene.splinecode" className='spline flex justify-center h-[60vh]' />
-            <div>
-              <p className="HomePageText text-6xl text-gray-600">Connect Instantly.</p>
+            <div className="flex flex-col">
+              <p className="HomePageText text-6xl text-gray-600 ">Connect Instantly.</p>
+              <p className="HomePageText text-6xl text-gray-600 text-center">With Chatly.</p>
             </div>
           </div>
 
