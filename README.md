@@ -1,9 +1,16 @@
-# Chat-Application
-• Designed and developed a real-time chat application from scratch using Spring Boot and ReactJs. 
-• Employed RESTful APIs for smooth interaction between the front-end and back-end systems. 
-• Utilized JWT authentication and Spring Security to ensure secure user authentication and authorization 
-• Leveraged Web-Socket technology to enable seamless real-time communication between users, 
+## Chat-Application
+- Designed and developed a real-time chat application from scratch using Spring Boot and ReactJs.
+- 
+- Employed RESTful APIs for smooth interaction between the front-end and back-end systems.
+- 
+- Utilized JWT authentication and Spring Security to ensure secure user authentication and authorization
+- 
+- Leveraged Web-Socket technology to enable seamless real-time communication between users, 
   enhancing the user experience 
+
+
+
+
 
 ## Screenshots
 
