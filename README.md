@@ -16,7 +16,8 @@
 
 
 ## Home Page:
-![Screenshot 2024-04-08 161027](https://github.com/Prathamesh36/Online-Project-Management/assets/65437511/83744707-b14f-4057-9321-5aafa8429112)
+![image](https://github.com/Prathamesh36/Chat-Application/assets/65437511/80795633-074d-43a6-9543-47161655519c)
+
 
 ## Chat Module:
 ![Screenshot 2024-06-04 161032](https://github.com/Prathamesh36/Chat-Application/assets/65437511/0232125f-151b-4d8b-bb85-c9dc2aa1b34d)
